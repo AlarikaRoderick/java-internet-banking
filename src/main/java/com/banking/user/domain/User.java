@@ -3,7 +3,6 @@ package com.banking.user.domain;
 import com.banking.user.domain.security.Authority;
 import com.banking.user.domain.security.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jdk.javadoc.internal.doclets.formats.html.markup.HtmlAttr;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -36,17 +35,14 @@ public class User implements UserDetails {
     private Boolean enabled = Boolean.TRUE;
 
     @OneToOne
-    private PrimaryAccount primaryAccount; // Ana Hesap
-
-    @OneToOne
-    private SavingsAccount savingsAccount; // Vadeli Hesap
+    private PrimaryAccount primaryAccount;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
-    private List<Appointment> appointmentList; // Randevu
+    private List<Appointment> appointmentList;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Recipient> recipientList; // Alıcı
+    private List<Recipient> recipientList;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
@@ -138,14 +134,6 @@ public class User implements UserDetails {
         this.primaryAccount = primaryAccount;
     }
 
-    public SavingsAccount getSavingsAccount() {
-        return savingsAccount;
-    }
-
-    public void setSavingsAccount(SavingsAccount savingsAccount) {
-        this.savingsAccount = savingsAccount;
-    }
-
     public List<Appointment> getAppointmentList() {
         return appointmentList;
     }
@@ -174,7 +162,6 @@ public class User implements UserDetails {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", enabled=" + enabled +
                 ", primaryAccount=" + primaryAccount +
-                ", savingsAccount=" + savingsAccount +
                 ", appointmentList=" + appointmentList +
                 ", recipientList=" + recipientList +
                 '}';

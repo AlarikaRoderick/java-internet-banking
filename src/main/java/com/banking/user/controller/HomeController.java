@@ -2,7 +2,6 @@ package com.banking.user.controller;
 
 import com.banking.user.dao.RoleDao;
 import com.banking.user.domain.PrimaryAccount;
-import com.banking.user.domain.SavingsAccount;
 import com.banking.user.domain.User;
 import com.banking.user.domain.security.Role;
 import com.banking.user.domain.security.UserRole;
@@ -70,7 +69,6 @@ public class HomeController {
             userRoles.add(new UserRole(user, role));
 
             userService.createUser(user, userRoles);
-            // userService.save(user); artık role ve password eklendiği için burası commente alındı!
 
             return "redirect:/";
         }
@@ -82,10 +80,8 @@ public class HomeController {
         User user = userService.findByUsername(principal.getName());
 
         PrimaryAccount primaryAccount = user.getPrimaryAccount();
-        SavingsAccount savingsAccount = user.getSavingsAccount();
 
         model.addAttribute("primaryAccount", primaryAccount);
-        model.addAttribute("savingsAccount", savingsAccount);
 
         return "user";
     }

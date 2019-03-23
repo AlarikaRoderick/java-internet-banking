@@ -54,29 +54,25 @@
                             <li class="hidden">
                                 <a class="page-scroll" href="#page-top"></a>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Счета <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a th:href="@{/account/primaryAccount}">Основной счет</a></li>  <!--@{/account/primaryAccount}-->
-                                    <li role="separator" class="divider"></li>
-                                    <li><a th:href="@{/account/savingsAccount}">Страховой счет</a></li>  <!--@{/account/savingsAccount}-->
-                                </ul>
+                            <li>
+                                <a th:href="@{/account/card}" class="navbar-brand page-scroll">Карты</a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Перевод <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Платежи и переводы<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a th:href="@{/transfer/betweenAccounts}">Между счетами</a></li> <!--@{/transfer/betweenAccounts}-->
-                                    <li><a th:href="@{/transfer/toSomeoneElse}">Другой аккаунт</a></li>    <!--@{/transfer/toSomeoneElse}-->
+                                    <li><a th:href="@{/payments/last}">Последние платежи</a></li>
+                                    <li><a th:href="@{/payments/favorite}">Избранные платежи</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a th:href="@{/transfer/recipient}">Добавить/редактировать получателя</a></li> <!--@{/transfer/recipient}-->
+                                    <li><a th:href="@{/payments/betweenCards}">Перевод с карты на карту</a></li>
+                                    <li><a th:href="@{/payments/toSomeoneElse}">Перевод пользователю Банкинга</a></li>
+                                    <li><a th:href="@{/payments/internet}">Оплата интернета</a></li>
+                                    <li><a th:href="@{/payments/mts}">МТС</a></li>
+                                    <li><a th:href="@{/payments/velcom}">Velcom</a></li>
 
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Назначение <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a th:href="@{/appointment/create}">Создание</a></li>  <!--@{/appointment/create}-->
-                                </ul>
+                            <li>
+                                <a th:href="@{/exchange}" class="navbar-brand page-scroll">Курсы валют</a>
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">

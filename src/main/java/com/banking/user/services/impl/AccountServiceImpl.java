@@ -1,9 +1,7 @@
 package com.banking.user.services.impl;
 
 import com.banking.user.dao.PrimaryAccountDao;
-import com.banking.user.dao.SavingsAccountDao;
 import com.banking.user.domain.PrimaryAccount;
-import com.banking.user.domain.SavingsAccount;
 import com.banking.user.services.AccountService;
 import com.banking.user.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +14,6 @@ public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private PrimaryAccountDao primaryAccountDao;
-
-    @Autowired
-    private SavingsAccountDao savingsAccountDao;
 
     @Autowired
     private UserService userService;
@@ -34,18 +29,6 @@ public class AccountServiceImpl implements AccountService {
         primaryAccountDao.save(primaryAccount);
 
         return primaryAccountDao.findByAccountNumber(primaryAccount.getAccountNumber());
-    }
-
-    @Override
-    public SavingsAccount createSavingsAccount() {
-        SavingsAccount savingsAccount = new SavingsAccount();
-
-        savingsAccount.setAccountBalance(new BigDecimal(0.0));
-        savingsAccount.setAccountNumber(accountNumberGeneration());
-
-        savingsAccountDao.save(savingsAccount);
-
-        return savingsAccountDao.findByAccountNumber(savingsAccount.getAccountNumber());
     }
 
     public Integer accountNumberGeneration(){

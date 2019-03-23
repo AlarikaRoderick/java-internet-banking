@@ -1,7 +1,6 @@
 package com.banking.user.controller;
 
 import com.banking.user.domain.PrimaryAccount;
-import com.banking.user.domain.SavingsAccount;
 import com.banking.user.domain.User;
 import com.banking.user.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +26,11 @@ public class AccountController {
         model.addAttribute(primaryAccount);
 
         return "primaryAccount";
+    }
+
+    @RequestMapping("/card")
+    public String cardPage(Model model, Principal principal){
+        return "card";
     }
 
 }
