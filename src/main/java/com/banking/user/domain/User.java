@@ -3,6 +3,7 @@ package com.banking.user.domain;
 import com.banking.user.domain.security.Authority;
 import com.banking.user.domain.security.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jdk.javadoc.internal.doclets.formats.html.markup.HtmlAttr;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,6 +12,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by gokhan.gunay on 2/5/2018.
@@ -56,6 +58,16 @@ public class User implements UserDetails {
 
     public void setUserRoles(Set<UserRole> userRoles) {
         this.userRoles = userRoles;
+    }
+
+    public boolean isAdmin(){
+        Set<UserRole> filtered = userRoles.stream()
+            .filter(mc -> mc.getRole().equals("ADMIN"))
+            .collect(Collectors.toSet());
+        if (filtered.isEmpty()){
+            return false;
+        }
+        else return true;
     }
 
     public Long getId() {

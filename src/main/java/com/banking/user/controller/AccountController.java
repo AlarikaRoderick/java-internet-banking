@@ -29,15 +29,4 @@ public class AccountController {
         return "primaryAccount";
     }
 
-    @RequestMapping("/savingsAccount")
-    public String savingsAccount(Model model, Principal principal){
-
-        User user = userService.findByUsername(principal.getName());
-        SavingsAccount savingsAccount = user.getSavingsAccount();
-
-        model.addAttribute(savingsAccount);
-
-        return "savingsAccount";
-    }
-
 }
