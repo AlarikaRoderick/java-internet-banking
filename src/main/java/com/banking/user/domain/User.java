@@ -48,6 +48,9 @@ public class User implements UserDetails {
     @JsonIgnore
     private Set<UserRole> userRoles = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Card> cards = new HashSet<>();
+
     public Set<UserRole> getUserRoles() {
         return userRoles;
     }
@@ -148,6 +151,14 @@ public class User implements UserDetails {
 
     public void setRecipientList(List<Recipient> recipientList) {
         this.recipientList = recipientList;
+    }
+
+    public Set<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(Set<Card> cards) {
+        this.cards = cards;
     }
 
     @Override
